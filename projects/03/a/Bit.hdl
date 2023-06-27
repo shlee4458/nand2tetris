@@ -14,5 +14,7 @@ CHIP Bit {
     OUT out;
 
     PARTS:
-    // Put your code here:
+    // Mux decides what to feed to DFF, that is delayed by a clock tick
+    Mux(a=prevOut, b=in, sel=load, out=a);
+    DFF(in=a, out=out, out=prevOut);
 }

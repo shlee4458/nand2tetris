@@ -16,5 +16,17 @@ CHIP PC {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    
+    // output value of the Register will be fed into the next iteration
+    Register(in=this, load=true, out=out, out=oo);
+
+    // inc
+    Inc16(in=oo, out=plusOne);
+    Mux16(a=oo, b=plusOne, sel=inc, out=afterInc);
+
+    // load
+    Mux16(a=afterInc, b=in, sel=load, out=afterLoad);
+
+    // reset
+    Mux16(a=afterLoad, b=false, sel=reset, out=this);
 }
