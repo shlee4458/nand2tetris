@@ -10,3 +10,38 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 // Put your code here.
+
+// loop r1 times and add ro to r2
+
+@R2
+M=0
+
+(LOOP)
+    @R1
+    D=M
+    
+    
+    // if R1 is 0 exit the loop and end
+    @END
+    D; JEQ
+
+    // get the value from R0
+    @R0
+    D=M
+
+    // update R2
+    @R2
+    M=M+D
+
+    // update R1
+    @R1
+    M=M-1
+
+    // loop back to loop
+    @LOOP
+    0; JMP
+    
+
+(END)
+    @END
+    0; JMP
