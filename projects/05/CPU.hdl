@@ -43,7 +43,7 @@ CHIP CPU {
     Not(in=instruction[15], out=ni);
     Mux16(a=outtM, b=instruction, sel=ni, out=i); // if C instruction use the return value of the alu
 
-    // decide whether to store the
+    // decide whether to store the value in the A register
     Or(a=ni, b=instruction[5], out=intoA);
     ARegister(in=i, load=intoA, out=A, out[0..14]=addressM);
 
