@@ -1,0 +1,60 @@
+// this class is the object that represents where the next 1 will be drawn
+class Editor {
+    field int x, y; // where the next 1 is to be drawn
+    field int size; // font size -- at minimum 9 is required
+
+    constructor Editor new(int Asize) {
+        // draw at the start of the line as a default
+        let x = 0;
+        let y = 0;
+        let temp = Asize / 2;
+
+        // set size as the closest odd number
+        if (temp * 2 = Asize) { 
+            let size = temp + 1;
+        } else {
+            let size = Asize;    
+        }
+        return this;
+    }
+
+    // this method is called when the key 1 is pressed
+    method void draw() {
+        // find the mid point of the vertical
+        let mid = y + Asize / 2;
+        Screen.drawRectangle(x, mid, x + size - 1, mid);
+        return;
+    }
+
+    /**
+    Updates the starting x, y position of the new character to be typed
+        this method is called after every draw method is called
+    */
+    method void updateXY() {
+        // update y
+        let y = y + size;
+        if (y > 256 - size) { // if y is out of bound
+            let x = x + size; // update the x
+            let y = 0; // sets y to zero
+        }
+        return;
+    }
+
+    /**
+    Deletes the most recently typed charater from the screen
+    */
+    method void delete() {
+        // set the color to 0
+        do Screen.setColor(false);
+        do draw();
+        return;
+    }
+
+    /**
+    Disposes the object
+    */
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+}

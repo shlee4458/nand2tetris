@@ -1,0 +1,50 @@
+class EditorEnginer {
+
+    field Editor editor;
+
+    constructor EditorEnginer new() {
+        let editor = Editor.new(5);
+        return this;
+    }
+
+    method void write() {
+        do editor.draw();
+        do editor.updateXY();
+        return;
+    }
+
+    method void run() {
+      var char key;  // the key currently pressed by the user
+      var boolean exit;
+      let exit = false;
+
+      // while the user did not quit the program
+      while (~exit) {
+
+        // while the key is not pressed
+        while (key = 0) {
+            let key = Keyboard.keyPressed();
+        }
+        
+        if (key = 1) {
+            do write();
+        }
+        if (key = 2) {
+            let exit = true;
+        }
+
+        // wait for the key to be released
+        while (~(key = 0)) {
+            let key = Keyboard.keyPressed();
+        }
+      }
+      return;
+    }
+
+   /** Disposes the editor. */
+   method void dispose() {
+      do editor.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+}

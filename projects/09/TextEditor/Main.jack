@@ -1,0 +1,14 @@
+// this is the main entry to the program
+// the program will instantiate Editor class, which is used to type 1 on the screen
+// when key '1' is pressed
+// this program can be extended to create a text editor program that allows editing
+// any characters that can be represented by digits
+class Main {
+    function void main() {
+        var EditorEngine engine;
+        let engine = EditorEngine.new();
+        do engine.run();
+        do engine.dispose();
+        return;
+    }
+}
